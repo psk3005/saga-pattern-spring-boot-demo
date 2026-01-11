@@ -12,13 +12,10 @@ import org.springframework.kafka.core.ProducerFactory;
 public class KafkaConfig {
 
     @Value("${products.events.topic.name}")
-    private final String productsEventsTopicName;
+    private String productsEventsTopicName;
+
     private final static Integer TOPIC_REPLICATION_FACTOR=3;
     private final static Integer TOPIC_PARTITIONS=3;
-
-    public KafkaConfig(String productsEventsTopicName) {
-        this.productsEventsTopicName = productsEventsTopicName;
-    }
 
     @Bean
     NewTopic createProductsEventsTopic() {
