@@ -9,6 +9,7 @@ import com.appsdeveloperblog.payments.service.PaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -31,6 +32,7 @@ public class PaymentsCommandsHandler {
         this.paymentEventsTopicName = paymentEventsTopicName;
     }
 
+    @KafkaHandler
     public void handlePaymentsCommandsEvent (@Payload ProcessPaymentCommand event) {
         try {
             Payment payment = new Payment(event.getOrderId(), event.getProductId(), event.getProductPrice(), event.getProductQuantity());

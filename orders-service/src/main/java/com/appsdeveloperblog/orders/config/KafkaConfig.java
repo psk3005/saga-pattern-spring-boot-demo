@@ -24,7 +24,7 @@ public class KafkaConfig {
     @Value("${payments.commands.topic.name}")
     private String paymentsCommandsTopicName;
 
-    @Value("${orders.commands.topic.name=}")
+    @Value("${orders.commands.topic.name}")
     private String ordersCommandsTopicName;
 
     private final static Integer TOPIC_REPLICATION_FACTOR=3;
